@@ -4,7 +4,7 @@ let config = require('./config.json');
 let prefix = config.prefix;
 let main;
 let database;
-let copyright = "Dispatcher by Franklin Mitchell";
+let copyright = "Bot by Frenklin Mitchell";
 let cooldown = new Set();
 let embed_setup = new Array(2);
 let version = "0.2"
@@ -12,8 +12,8 @@ let version = "0.2"
 client.on('ready', () => {
     main = client.guilds.get("582297095554203811");
     database = client.guilds.get("581847932177743873");
-    main.channels.find(c => c.name == "bot-logs").send(`[✔] Бот успешно запущен. Версия: ${version}.`)
-    console.log("I'm ready!")
+    main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
+    console.log("I'm ready!");
 });
 
 client.on('message', async message => {
