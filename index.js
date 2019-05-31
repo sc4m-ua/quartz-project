@@ -4,7 +4,7 @@ let config = require('./config.json');
 let prefix = config.prefix;
 let main;
 let database;
-let copyright = "Bot by Frenklin Mitchell";
+let copyright = "Bot by Franklin Mitchell";
 let cooldown = new Set();
 let embed_setup = new Array(2);
 let version = "0.2"
