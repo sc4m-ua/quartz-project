@@ -26,7 +26,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
             });
         }
         if(count > parseInt(db_second.topic.split(";")[2])) return message.reply("`у вас нет столько кварцов.");
-        db_first.setTopic(`${db_first.topic.split(";")[0]};${parseInt(db_first.topic.split(";")[1])};${db_first.topic.split(";")[2]} - count`);
+        db_first.setTopic(`${db_first.topic.split(";")[0]};${parseInt(db_first.topic.split(";")[1])};${db_first.topic.split(";")[2] - count}`);
         db_second.setTopic(`${db_second.topic.split(";")[0]};${parseInt(db_second.topic.split(";")[1])};${db_second.topic.split(";")[2] + count}`);
         message.channel.send(`${to}, на ваш счет зачислено ${count} кварцов. Источник: ${message.member}`);
     }
