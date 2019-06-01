@@ -6,7 +6,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
     if(cmd == `${prefix}bal`){
         message.reply(`\`ваш баланс составляет ${db_channel.topic.split(";")[2]} кварцов.\``);
     }
-    if(cmd == `${prefix}pay`){
+    /*if(cmd == `${prefix}pay`){
         message.delete();
         let to = message.mentions.members.first();
         if(!to) return message.reply("`правильное использование: /pay [пользователь] [количество].`");
@@ -29,7 +29,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
         db_first.setTopic(`${db_first.topic.split(";")[0]};${parseInt(db_first.topic.split(";")[1]) - count};${db_first.topic.split(";")[2]}`);
         db_second.setTopic(`${db_second.topic.split(";")[0]};${parseInt(db_second.topic.split(";")[1]) + count};${db_second.topic.split(";")[2]}`);
         message.channel.send(`${to}, на ваш счет зачислено ${count} кварцов. Источник: ${message.member}`);
-    }
+    }*/
     if(cooldown.has(message.author.id)) return;
     db_channel.setTopic(`${message.author.id};${db_channel.topic.split(";")[1]};${parseInt(db_channel.topic.split(";")[2]) + 1}`);
     cooldown.add(message.author.id);
