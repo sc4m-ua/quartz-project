@@ -12,7 +12,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
         if(!to) return message.reply("`правильное использование: /pay [пользователь] [количество].`");
         if(to.id == message.author.id) return message.reply("`вы не можете передать деньги самому себе.`");
         let count = args[2];
-        if(isNaN(count)) return message.reply("`количество должно быть числом.`");
+        if(+count == NaN) return message.reply("`количество должно быть числом.`");
         count = parseInt(count);
         if(count < 1 || count > 250) return message.reply("вы не можете передать меньшего 1-го и больше 250-ти кварцов.");
         let db_first = database.channels.find(c => c.name == message.member.id);
