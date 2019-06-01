@@ -16,7 +16,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
         let count = args[1];
         if(isNaN(count)) return message.reply("`количество должно быть числом.`");
         count = parseInt(count);
-        if(count < 1 || count > 250) return message.reply("вы не можете передать меньшего 1-го и больше 250-ти кварцов.");
+        if(count < 1 || count > 250) return message.reply("`вы не можете передать меньшего 1-го и больше 250-ти кварцов.`");
         let db_first = database.channels.find(c => c.name == message.member.id);
         let db_second = database.channels.find(c => c.name == to.id);
         if(!db_first) return message.reply("`ваш баланс составляет 0 кварцов.`");
@@ -30,7 +30,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
         if(count > parseInt(db_first.topic.split(";")[2])) return message.reply("`у вас нет столько кварцов.`");
         db_first.setTopic(`${db_first.topic.split(";")[0]};${db_first.topic.split(";")[1]};${parseInt(db_first.topic.split(";")[2]) - count}`);
         db_second.setTopic(`${db_second.topic.split(";")[0]};${db_second.topic.split(";")[1]};${parseInt(db_second.topic.split(";")[2]) + count}`);
-        message.channel.send(`${to}, на ваш счет зачислено ${count} кварцов. Источник: ${message.member}`);
+        message.channel.send(`${to}, \`на ваш счет зачислено ${count} кварцов. Источник:\` ${message.member}`);
         return;
     }
     if(cooldown.has(message.author.id)) return;
