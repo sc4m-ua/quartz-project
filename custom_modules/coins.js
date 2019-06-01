@@ -11,7 +11,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
         let to = message.mentions.members.first();
         if(!to) return message.reply("`правильное использование: /pay [пользователь] [количество].`");
         if(to.id == message.author.id) return message.reply("`вы не можете передать деньги самому себе.`");
-        let count = args[2];
+        let count = args[1];
         console.log(count);
         console.log(isNaN(count));
         if(isNaN(count)) return message.reply("`количество должно быть числом.`");
