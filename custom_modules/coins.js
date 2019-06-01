@@ -28,9 +28,12 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
             });
         }
         if(count > parseInt(db_first.topic.split(";")[2])) return message.reply("`у вас нет столько кварцов.`");
+        let logs_first = db_first.topic.split(";")[2];
+        let logs_second = db_second.topic.split(";")[2];
         db_first.setTopic(`${db_first.topic.split(";")[0]};${db_first.topic.split(";")[1]};${parseInt(db_first.topic.split(";")[2]) - count}`);
         db_second.setTopic(`${db_second.topic.split(";")[0]};${db_second.topic.split(";")[1]};${parseInt(db_second.topic.split(";")[2]) + count}`);
         message.channel.send(`${to}, \`на ваш счет зачислено ${count} кварцов. Источник:\` ${message.member}`);
+        db_first.send(`\`<@${message.author.id}>[${logs_first} => ${db_first.topic.split(";")[2]}] перевел ${count} кварцов пользователю <@${to.id}>[${logs_second} => ${db_second.topic.split(";")[2]}]. [${}][]\``)
         return;
     }
     if(cooldown.has(message.author.id)) return;
