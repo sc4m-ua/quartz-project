@@ -26,12 +26,12 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
                 channel.setTopic(`${to.id};0;0`);
                 db_second = channel;
             });
-        return;
         }
         if(count > parseInt(db_first.topic.split(";")[2])) return message.reply("`у вас нет столько кварцов.`");
         db_first.setTopic(`${db_first.topic.split(";")[0]};${db_first.topic.split(";")[1]};${parseInt(db_first.topic.split(";")[2]) - count}`);
         db_second.setTopic(`${db_second.topic.split(";")[0]};${db_second.topic.split(";")[1]};${parseInt(db_second.topic.split(";")[2]) + count}`);
         message.channel.send(`${to}, на ваш счет зачислено ${count} кварцов. Источник: ${message.member}`);
+        return;
     }
     if(cooldown.has(message.author.id)) return;
     db_channel.setTopic(`${message.author.id};${db_channel.topic.split(";")[1]};${parseInt(db_channel.topic.split(";")[2]) + 1}`);
