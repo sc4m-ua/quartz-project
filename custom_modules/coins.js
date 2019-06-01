@@ -11,11 +11,8 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
         let to = message.mentions.members.first();
         if(!to) return message.reply("`правильное использование: /pay [пользователь] [количество].`");
         if(to.id == message.author.id) return message.reply("`вы не можете передать деньги самому себе.`");
-        let count = args[1];
-        console.log(count);
-        console.log(isNaN(count));
         if(isNaN(count)) return message.reply("`количество должно быть числом.`");
-        parseInt(count);
+        count = parseInt(count);
         if(count < 1 || count > 250) return message.reply("вы не можете передать меньшего 1-го и больше 250-ти кварцов.");
         let db_first = database.channels.find(c => c.name == message.member.id);
         let db_second = database.channels.find(c => c.name == to.id);
