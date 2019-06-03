@@ -1,0 +1,6 @@
+const Discord = require('discord.js');
+
+exports.run = async (message, database) => {
+    if(message.guild.id != database.id) return;
+    
+}
