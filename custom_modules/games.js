@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 
 exports.run = async (message, database, cmd, args, prefix) => {
   if(cmd == `${prefix}dice`){
+    message.delete();
     let player = message.mentions.members.first();
     if(!player) return message.reply("`правильное использование команды: !pay [пользователь] [ставка].`");
     let count = args[1];
