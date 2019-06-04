@@ -10,7 +10,7 @@ exports.run = async (message, database, cmd, args, prefix) => {
     if(isNaN(count)) return message.reply("`ставка должна иметь числовое значение.`");
     count = parseInt(count);
     if(count < 1 || count > 1000) return message.reply("`ставка должна быть в диапазоне от 1 до 1000.`");
-    let msg await = message.channel.send(`${player}, \`${message.member.displayName} предлагает вам сыграть в кости. Ставка: ${count}. Нажмите на галочку, чтобы принять предложени.\``);
+    let msg = await message.channel.send(`${player}, \`${message.member.displayName} предлагает вам сыграть в кости. Ставка: ${count}. Нажмите на галочку, чтобы принять предложени.\``);
     msg.react("✔");
     let filter = (reaction, user) => reaction.emoji.name == "✔" && user.id = player.id;
     let collector = msg.createReactionCollector(filter, {time: 30000});
