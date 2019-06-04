@@ -4,9 +4,9 @@ exports.run = async (message, database, cmd, args, prefix) => {
   if(cmd == `${prefix}dice`){
     message.delete();
     let player = message.mentions.members.first();
-    if(!player) return message.reply("`правильное использование команды: !pay [пользователь] [ставка].`");
+    if(!player) return message.reply("`правильное использование команды: !dice [пользователь] [ставка].`");
     let count = args[1];
-    if(!count) return message.reply("`правильное использование команды: !pay [пользователь] [ставка].`");
+    if(!count) return message.reply("`правильное использование команды: !dice [пользователь] [ставка].`");
     if(isNaN(count)) return message.reply("`ставка должна иметь числовое значение.`");
     count = parseInt(count);
     if(count < 1 || count > 1000) return message.reply("`ставка должна быть в диапазоне от 1 до 1000.`");
