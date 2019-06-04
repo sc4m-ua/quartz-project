@@ -16,5 +16,8 @@ exports.run = async (message, database, cmd, args, prefix) => {
     collector.on('collect', reaction => {
       //some funcs here
     });
+    collector.on('end', collected => {
+      if(!collected) return message.reply("`пользователь отказался от игры.`")
+    })
   }
 }
