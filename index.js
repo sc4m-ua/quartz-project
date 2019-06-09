@@ -212,7 +212,7 @@ async function autoDelete(guild, database){
             if(channel.name.startsWith("appeal-")) return;
             let createdAt = channel.createdAt.valueOf();
             let db_channel = await database.channels.find(c => c.name == channel.id);
-            if(!db_channel) return guild.channels.find(c => c.name == "bot-logs").send("`\`[APPEAL] Обращение №${channel.name.split("-")[1]} было удалено, так как не было найдено в базе данных. Сообщите о данной ошибке техническим администраторам.\``);
+            if(!db_channel) return guild.channels.find(c => c.name == "bot-logs").send(`\`[APPEAL] Обращение №${channel.name.split("-")[1]} было удалено, так как не было найдено в базе данных. Сообщите о данной ошибке техническим администраторам.\``);
         });
     }, 300000)
 }
