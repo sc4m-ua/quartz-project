@@ -184,6 +184,10 @@ client.on('message', async message => {
     }
 });
 
+client.on('roleDelete', async role => {
+
+});
+
 client.login(process.env.BOT_TOKEN);
 
 async function replyDelete(message, text, time){
