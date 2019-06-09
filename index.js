@@ -193,7 +193,7 @@ client.on('roleDelete', async role => {
         member.setRoles([]);
         let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
         if(!mod_chat) return;
-        mod_chat.send(`\`[WARNING] `<@${member.id}>` был снят системой анти-слива. Причина: удаление роли "${role.name}".\``);
+        mod_chat.send(`\`[WARNING] \`<@${member.id}>\` был снят системой анти-слива. Причина: удаление роли "${role.name}".\``);
     });
 });
 
@@ -205,7 +205,7 @@ client.on('roleCreate', async role => {
         member.setRoles([]);
         let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
         if(!mod_chat) return;
-        mod_chat.send(`\`[WARNING] `<@${member.id}>` был снят системой анти-слива. Причина: создание роли "${role.name}".\``);
+        mod_chat.send(`\`[WARNING] \`<@${member.id}>\` был снят системой анти-слива. Причина: создание роли "${role.name}".\``);
     });
 });
 
@@ -217,7 +217,7 @@ client.on('roleUpdate', async role => {
         member.setRoles([]);
         let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
         if(!mod_chat) return;
-        mod_chat.send(`\`[WARNING] `<@${member.id}>` был снят системой анти-слива. Причина: обновление роли "${role.name}".\``);
+        mod_chat.send(`\`[WARNING] \`<@${member.id}>\` был снят системой анти-слива. Причина: обновление роли "${role.name}".\``);
     });
 });
 
