@@ -192,7 +192,7 @@ client.on('roleDelete', async role => {
         member.setRoles([]);
         let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
         if(!mod_chat) return;
-        mod_chat.send(`[WARNING] <@${member.id}> подозревается в сливе, с него были сняты все роли. Причина: удаление роли.`)
+        mod_chat.send(`\`[WARNING] <@${member.id}> был снят системой анти-слива. Причина: удаление роли "role.name".\``);
     })
 });
 
