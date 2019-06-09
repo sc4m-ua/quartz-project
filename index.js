@@ -200,3 +200,15 @@ async function renderSupport(){
         .setColor("#0090ff")
     main.channels.find(c => c.name == "support").send(embed);
 }
+
+async function autoDelete(guild, database){
+    let date = new Date().valueOf;
+    setInterval(async () => {
+        guild.channels.forEach(async channel => {
+            if(channel.name.startsWith("appeal-")) return;
+            let createdAt = channel.createdAt.valueOf();
+            let db_channel = await database.channels.find(c => c.name == channel.id);
+            if(!db_channel) return guild.channels.find(c => c.name == "bot-logs").send("`\`[APPEAL] Обращение №${channel.name.split("-")[1]} было удалено, так как не было найдено в базе данных. Сообщите о данной ошибке техническим администраторам.\``);
+        });
+    }, 300000)
+}
