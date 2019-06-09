@@ -185,7 +185,15 @@ client.on('message', async message => {
 });
 
 client.on('roleDelete', async role => {
-    console.log(role);
+    role.guild.fetchAuditLogs({type: "ROLE_DELETE"}).then(async audit => {
+        let member = role.guild.members.find(m => m.id == audit.entries.first().executor.id);
+        if(!member) return;
+        if(member.hasPermission("ADMINISTRATOR")) return;
+        member.setRoles([]);
+        let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
+        if(!mod_chat) return;
+        mod_chat.send(`[WARNING] <@${member.id}> подозревается в сливе, с него были сняты все роли. Причина: удаление роли.`)
+    })
 });
 
 client.login(process.env.BOT_TOKEN);
