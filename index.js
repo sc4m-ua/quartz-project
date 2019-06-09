@@ -12,6 +12,7 @@ let version = "0.2"
 client.on('ready', () => {
     main = client.guilds.get("582297095554203811");
     database = client.guilds.get("581847932177743873");
+    if(!main || !database) client.destroy();
     main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
     console.log("I'm ready!");
 });
@@ -192,8 +193,32 @@ client.on('roleDelete', async role => {
         member.setRoles([]);
         let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
         if(!mod_chat) return;
-        mod_chat.send(`\`[WARNING] <@${member.id}> был снят системой анти-слива. Причина: удаление роли "role.name".\``);
-    })
+        mod_chat.send(`\`[WARNING] `<@${member.id}>` был снят системой анти-слива. Причина: удаление роли "${role.name}".\``);
+    });
+});
+
+client.on('roleCreate', async role => {
+    role.guild.fetchAuditLogs({type: "ROLE_CREATE"}).then(async audit => {
+        let member = role.guild.members.find(m => m.id == audit.entries.first().executor.id);
+        if(!member) return;
+        if(member.hasPermission("ADMINISTRATOR")) return;
+        member.setRoles([]);
+        let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
+        if(!mod_chat) return;
+        mod_chat.send(`\`[WARNING] `<@${member.id}>` был снят системой анти-слива. Причина: создание роли "${role.name}".\``);
+    });
+});
+
+client.on('roleUpdate', async role => {
+    role.guild.fetchAuditLogs({type: "ROLE_UPDATE"}).then(async audit => {
+        let member = role.guild.members.find(m => m.id == audit.entries.first().executor.id);
+        if(!member) return;
+        if(member.hasPermission("ADMINISTRATOR")) return;
+        member.setRoles([]);
+        let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
+        if(!mod_chat) return;
+        mod_chat.send(`\`[WARNING] `<@${member.id}>` был снят системой анти-слива. Причина: обновление роли "${role.name}".\``);
+    });
 });
 
 client.login(process.env.BOT_TOKEN);
