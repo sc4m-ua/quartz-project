@@ -261,5 +261,5 @@ async function autoDelete(){
                 }
             });
         });
-    }, 60000)
+    }, 300000)
 }
