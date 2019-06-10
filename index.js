@@ -245,18 +245,15 @@ async function autoDelete(){
         main.channels.forEach(async channel => {
             if(!channel.name.startsWith("appeal-")) return;
             let createdAt = channel.createdAt.valueOf() - 1000000000000;
-            console.log("Имя норм")
             let db_channel = await database.channels.find(c => c.name == channel.id);
             if(!db_channel) return main.channels.find(c => c.name == "bot-logs").send(`\`[APPEAL] Обращение №${channel.name.split("-")[1]} было удалено, так как не было найдено в базе данных. Сообщите о данной ошибке техническим администраторам.\``);
             let msgs = await db_channel.fetchMessages({limit: 10});
-            if(msgs.size > 1) return console.log("Канал содержит больше одного сообщения.")
             msgs.forEach(async temp => {
                 if(temp.content.split("\n")[1] != "2") return;
                 console.log(`${date} - ${createdAt} = ${date+createdAt}`)
                 if(date - createdAt >= 172800000){
                     channel.delete();
                     db_channel.delete();
-                    console.log("Последний шаг")
                     main.channels.find(c => c.name == "bot-logs").send(`\`[APPEAL] Обращение №${channel.name.split("-")[1]} было удалено. Причина: 48 часов в статусе "Закрыто".\``);
                 }
             });
