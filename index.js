@@ -13,6 +13,7 @@ client.on('ready', () => {
     main = client.guilds.get("582297095554203811");
     database = client.guilds.get("581847932177743873");
     if(!main || !database) client.destroy();
+    autoDelete();
     main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
     console.log("I'm ready!");
 });
@@ -238,7 +239,7 @@ async function renderSupport(){
     main.channels.find(c => c.name == "support").send(embed);
 }
 
-async function autoDelete(guild, database){
+async function autoDelete(){
     let date = new Date().valueOf;
     setInterval(async () => {
         guild.channels.forEach(async channel => {
