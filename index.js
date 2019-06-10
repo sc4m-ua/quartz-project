@@ -252,7 +252,7 @@ async function autoDelete(){
             if(msgs.size > 1) return console.log("Канал содержит больше одного сообщения.")
             msgs.forEach(async temp => {
                 if(temp.content.split("\n")[1] != "2") return;
-                console.log("Статус тоже норм")
+                console.log("Статус тоже норм - " + date - createdAt)
                 if(date - createdAt >= 172800000){
                     channel.delete();
                     db_channel.delete();
