@@ -240,7 +240,7 @@ async function renderSupport(){
 }
 
 async function autoDelete(){
-    let date = new Date().valueOf - 1000000000000;
+    let date = new Date().valueOf() - 1000000000000;
     setInterval(async () => {
         main.channels.forEach(async channel => {
             if(!channel.name.startsWith("appeal-")) return;
