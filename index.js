@@ -250,7 +250,6 @@ async function autoDelete(){
             let msgs = await db_channel.fetchMessages({limit: 10});
             msgs.forEach(async temp => {
                 if(temp.content.split("\n")[1] != "2") return;
-                console.log(`${date} - ${createdAt} = ${date+createdAt}`)
                 if(date - createdAt >= 172800000){
                     channel.delete();
                     db_channel.delete();
