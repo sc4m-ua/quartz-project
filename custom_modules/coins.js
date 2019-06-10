@@ -32,7 +32,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
         let logs_second = db_second.topic.split(";")[2];
         await db_first.setTopic(`${db_first.topic.split(";")[0]};${db_first.topic.split(";")[1]};${parseInt(db_first.topic.split(";")[2]) - count}`);
         await db_second.setTopic(`${db_second.topic.split(";")[0]};${db_second.topic.split(";")[1]};${parseInt(db_second.topic.split(";")[2]) + count}`);
-        message.channel.send(`${to}, \`${message.member.displayName} передал вам ${count} кварцов.`);
+        message.channel.send(`${to}, \`${message.member.displayName} передал вам ${count} кварцов.\``);
         db_first.send(`\`<@${message.author.id}>[${logs_first} => ${db_first.topic.split(";")[2]}] перевел ${count} кварцов пользователю <@${to.id}>[${logs_second} => ${db_second.topic.split(";")[2]}].\``)
         return;
     }
