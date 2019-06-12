@@ -203,7 +203,6 @@ logger.on('message', async message => {
 
 logger.on('messageDelete', async message => {
     let channel = main.channels.find(c => c.name == "messages");
-    console.log(message)
     if(!channel) return;
     let embed = new Discord.RichEmbed();
     embed.setAuthor(`Сообщение в #${message.channel.name} от ${message.author.username}#${message.author.discriminator} было удалено.`, message.guild.iconURL);
