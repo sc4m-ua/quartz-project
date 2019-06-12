@@ -1,7 +1,9 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
+const logger = new Discord.Client();
 let config = require('./config.json');
 let prefix = config.prefix;
+let logger_prefix = config.logger_prefix;
 let main;
 let database;
 let copyright = "Bot by Franklin Mitchell";
@@ -16,6 +18,13 @@ client.on('ready', () => {
     autoDelete();
     main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
     console.log("I'm ready!");
+});
+
+logger.on('ready', () => {
+    main = client.guilds.get("582297095554203811");
+    if(!main) client.destroy();
+    main.channels.find(c => c.name == "bot-logs").send(`\`[COURSE] Начинаю держать в курсе.\``);
+    console.log("Начинаю держать в курсе.!");
 });
 
 client.on('message', async message => {
@@ -183,6 +192,12 @@ client.on('message', async message => {
                 message.channel.send(embed);
             });
         });
+    }
+});
+
+logger.on('message', async message => {
+    if(message.content == `${logger_prefix}ping`){
+        message.reply(`\`держу в курсе с задержкой ${logger.ping}ms.\``)
     }
 });
 
