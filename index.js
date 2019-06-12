@@ -238,6 +238,7 @@ client.on('roleUpdate', async role => {
 });
 
 client.login(process.env.BOT_TOKEN);
+logger.login(process.env.LOGGER_TOKEN);
 
 async function replyDelete(message, text, time){
     message.reply(text).then(msg => {
