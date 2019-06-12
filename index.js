@@ -201,6 +201,14 @@ logger.on('message', async message => {
     }
 });
 
+logger.on('messageDelete', async message => {
+    let channel = main.channels.find(c => c.name == "messages");
+    console.log(message)
+    //if(!channel) return;
+    //let embed = new Discord.RichEmbed();
+    //embed.setAuthor(`Сообщение от ${}`)
+})
+
 client.on('roleDelete', async role => {
     role.guild.fetchAuditLogs({type: "ROLE_DELETE"}).then(async audit => {
         let member = role.guild.members.find(m => m.id == audit.entries.first().executor.id);
