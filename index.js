@@ -213,6 +213,7 @@ logger.on('messageDelete', async message => {
     embed.setFooter('Держу в курсе', logger.user.avatarURL);
     embed.setTimestamp(new Date());
     embed.setColor("#3db4ff");
+    channel.send(embed);
 })
 
 client.on('roleDelete', async role => {
