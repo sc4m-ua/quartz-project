@@ -21,8 +21,8 @@ client.on('ready', () => {
 });
 
 logger.on('ready', () => {
-    main = client.guilds.get("582297095554203811");
-    if(!main) client.destroy();
+    main = logger.guilds.get("582297095554203811");
+    if(!main) logger.destroy();
     main.channels.find(c => c.name == "bot-logs").send(`\`[COURSE] Начинаю держать в курсе.\``);
     console.log("Начинаю держать в курсе.!");
 });
