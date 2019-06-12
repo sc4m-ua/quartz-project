@@ -10,7 +10,7 @@ exports.run = async (message, database, cooldown, cmd, args, prefix)  => {
     if(cmd == `${prefix}pay`){
         message.delete();
         let to = message.mentions.members.first();
-        if(!to) return message.reply("`правильное использование: /pay [пользователь] [количество].`");
+        if(!to) return message.reply("`правильное использование: !pay [пользователь] [количество].`");
         if(to.id == message.author.id) return message.reply("`вы не можете передать деньги самому себе.`");
         if(!args[1]) return message.reply("`вы не указали количество кварцов, которое хотите предать.`")
         let count = args[1];
