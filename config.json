@@ -1,4 +1,5 @@
 {
     "prefix": "!",
+    "logger_prefix": "/"
     "token": ""
 }
