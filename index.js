@@ -204,9 +204,15 @@ logger.on('message', async message => {
 logger.on('messageDelete', async message => {
     let channel = main.channels.find(c => c.name == "messages");
     console.log(message)
-    //if(!channel) return;
-    //let embed = new Discord.RichEmbed();
-    //embed.setAuthor(`Сообщение от ${}`)
+    if(!channel) return;
+    let embed = new Discord.RichEmbed();
+    embed.setAuthor(`Сообщение от ${message.author.username}#${message.author.discriminator} было удалено.`, message.guild.iconURL);
+    embed.addField(`Канал:`, message.channel);
+    embed.addField(`Автор:`, message.member);
+    embed.addField(`Содержание:`, message.content);
+    embed.setFooter('Держу в курсе', logger.user.avatarURL);
+    embed.setTimestamp(new Date());
+    embed.setColor("#3db4ff");
 })
 
 client.on('roleDelete', async role => {
