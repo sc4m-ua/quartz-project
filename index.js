@@ -206,15 +206,16 @@ logger.on('messageDelete', async message => {
     console.log(message)
     if(!channel) return;
     let embed = new Discord.RichEmbed();
-    embed.setAuthor(`Сообщение от ${message.author.username}#${message.author.discriminator} было удалено.`, message.guild.iconURL);
+    embed.setAuthor(`Сообщение в #${message.channel.name} от ${message.author.username}#${message.author.discriminator} было удалено.`, message.guild.iconURL);
     embed.addField(`Канал:`, message.channel);
     embed.addField(`Автор:`, message.member);
     embed.addField(`Содержание:`, message.content);
+    embed.addField(`ID's:`, `message: **${message.id}**\nchannel: **${message.channel.id}**\nauthor: **${message.author.id}**`)
     embed.setFooter('Держу в курсе', logger.user.avatarURL);
     embed.setTimestamp(new Date());
     embed.setColor("#3db4ff");
     channel.send(embed);
-})
+});
 
 client.on('roleDelete', async role => {
     role.guild.fetchAuditLogs({type: "ROLE_DELETE"}).then(async audit => {
