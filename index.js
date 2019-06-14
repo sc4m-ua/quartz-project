@@ -3,7 +3,6 @@ const client = new Discord.Client();
 const logger = new Discord.Client();
 let config = require('./config.json');
 let prefix = config.prefix;
-let logger_prefix = config.logger_prefix;
 let main;
 let database;
 let copyright = "Bot by Franklin Mitchell";
@@ -195,27 +194,6 @@ client.on('message', async message => {
     }
 });
 
-logger.on('message', async message => {
-    if(message.content == `${logger_prefix}ping`){
-        message.reply(`\`держу в курсе с задержкой ${logger.ping}ms.\``)
-    }
-});
-
-logger.on('messageDelete', async message => {
-    let channel = main.channels.find(c => c.name == "messages");
-    if(!channel) return;
-    let embed = new Discord.RichEmbed();
-    embed.setAuthor(`Сообщение в #${message.channel.name} от ${message.author.username}#${message.author.discriminator} было удалено.`, message.guild.iconURL);
-    embed.addField(`Канал:`, message.channel);
-    embed.addField(`Автор:`, message.member);
-    embed.addField(`Содержание:`, message.content);
-    embed.addField(`ID's:`, `message: **${message.id}**\nchannel: **${message.channel.id}**\nauthor: **${message.author.id}**`)
-    embed.setFooter('Держу в курсе', logger.user.avatarURL);
-    embed.setTimestamp(new Date());
-    embed.setColor("#3db4ff");
-    channel.send(embed);
-});
-
 client.on('roleDelete', async role => {
     role.guild.fetchAuditLogs({type: "ROLE_DELETE"}).then(async audit => {
         let member = role.guild.members.find(m => m.id == audit.entries.first().executor.id);
@@ -253,7 +231,6 @@ client.on('roleUpdate', async role => {
 });
 
 client.login(process.env.BOT_TOKEN);
-logger.login(process.env.LOGGER_TOKEN);
 
 async function replyDelete(message, text, time){
     message.reply(text).then(msg => {
