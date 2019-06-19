@@ -15,7 +15,7 @@ client.on('ready', () => {
     database = client.guilds.get("581847932177743873");
     if(!main || !database) client.destroy();
     autoDelete();
-    main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
+    //main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
     console.log("I'm ready!");
 });
 
