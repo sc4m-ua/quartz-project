@@ -15,7 +15,7 @@ client.on('ready', () => {
     database = client.guilds.get("581847932177743873");
     if(!main || !database) client.destroy();
     autoDelete();
-    //main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
+    main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
     console.log("I'm ready!");
 });
 
@@ -194,8 +194,8 @@ client.on('message', async message => {
         });
     }
     if(message.channel.name == "bug-report"){
-        if(!message.member.roles.has(message.guild.roles.find(r => r.name == "Testers Team"))) return;
         message.delete();
+        if(!message.member.roles.has(message.guild.roles.find(r => r.name == "Testers Team"))) return;
         message.reply("`ваш баг был успешно отправлен разработчикам.`").then(async msg => {
             msg.delete(5000);
         });
