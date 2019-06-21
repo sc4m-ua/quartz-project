@@ -202,12 +202,12 @@ client.on('message', async message => {
         let channel = message.guild.channels.find(c => c.name == "new-bugs");
         if(!channel) return console.log("New bugs channel doesn't exist.");
         let embed = new Discord.RichEmbed()
-            .setAuthor(`New bug reported by ${message.author.username}#${message.author.discriminator}.`)
-            .addField(`Message:`, message.content)
-            .addFiled(`Sender`, message.member)
-            .setFooter("Testers Team by Franklin Mitchell")
-            .setTimestamp(new Date())
-            .setColor("#36393F");
+        embed.setAuthor(`New bug reported by ${message.author.username}#${message.author.discriminator}.`)
+        embed.addField(`Message:`, message.content)
+        embed.addFiled(`Sender`, message.member)
+        embed.setFooter("Testers Team by Franklin Mitchell")
+        embed.setTimestamp(new Date())
+        embed.setColor("#36393F");
         channel.send(embed).then(async msg => {
             await msg.react("✅");
             msg.react("❌");
