@@ -204,7 +204,7 @@ client.on('message', async message => {
         let embed = new Discord.RichEmbed()
         embed.setAuthor(`New bug reported by ${message.author.username}#${message.author.discriminator}.`)
         embed.addField(`Message:`, message.content)
-        embed.addFiled(`Sender`, message.member)
+        embed.addField(`Sender:`, message.member)
         embed.setFooter("Testers Team by Franklin Mitchell")
         embed.setTimestamp(new Date())
         embed.setColor("#36393F");
