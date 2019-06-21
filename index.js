@@ -195,7 +195,7 @@ client.on('message', async message => {
     }
     if(message.channel.name == "bug-report"){
         message.delete();
-        if(!message.member.roles.has(message.guild.roles.find(r => r.name == "Testers Team"))) return;
+        if(!message.member.roles.has(message.guild.roles.find(r => r.name == "Testers Team")).id) return;
         message.reply("`ваш баг был успешно отправлен разработчикам.`").then(async msg => {
             msg.delete(5000);
         });
