@@ -193,6 +193,26 @@ client.on('message', async message => {
             });
         });
     }
+    if(message.channel.name == "bug-report"){
+        if(!message.member.roles.has(message.guild.roles.find(r => r.name == "Testers Team"))) return;
+        message.delete();
+        message.reply("`ваш баг был успешно отправлен разработчикам.`").then(async msg => {
+            msg.delete(5000);
+        });
+        let channel = message.guild.channels.find(c => c.name == "new-bugs");
+        if(!channel) return console.log("New bugs channel doesn't exist.");
+        let embed = new Discord.RichEmbed()
+            .setAuthor(`New bug reported by ${message.author.username}#${message.author.discriminator}.`)
+            .addField(`Message:`, message.content)
+            .addFiled(`Sender`, message.member)
+            .setFooter("Testers Team by Franklin Mitchell")
+            .setTimestamp(new Date())
+            .setColor("#36393F");
+        channel.send(embed).then(async msg => {
+            await msg.react("✅");
+            msg.react("❌");
+        });
+    }
 });
 
 client.on('roleDelete', async role => {
