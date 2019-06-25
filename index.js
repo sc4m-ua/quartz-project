@@ -13,10 +13,10 @@ let version = "0.2"
 client.on('ready', () => {
     main = client.guilds.get("582297095554203811");
     database = client.guilds.get("581847932177743873");
+    console.log("I'm ready!");
     if(!main || !database) client.destroy();
     autoDelete();
     main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
-    console.log("I'm ready!");
 });
 
 logger.on('ready', () => {
