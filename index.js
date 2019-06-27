@@ -267,8 +267,8 @@ client.on('raw', async packet => {
 });
 
 client.on('messageReactionAdd', async (reaction, user) => {
-    if(channel.name != "📞выдача-ролей") return;
-    if(!message.author.bot) return;
+    if(reaction.message.channel.name != "📞выдача-ролей") return;
+    if(!reaction.message.author.bot) return;
     if(reaction.emoji.name == "✅") console.log("галочка");
     if(reaction.emoji.name == "❌") console.log("крестик");
 });
