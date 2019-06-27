@@ -252,9 +252,7 @@ client.on('roleUpdate', async role => {
     });
 });
 
-client.on('messageReactionAdd', async reaction => {
-    console.log(reaction);
-});
+client.on('raw', console.log);
 
 client.login(process.env.BOT_TOKEN);
 
