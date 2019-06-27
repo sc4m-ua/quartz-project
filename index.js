@@ -38,11 +38,6 @@ client.on('message', async message => {
     require('./custom_modules/database').run(message, database, cmd, args, prefix);
     require('./custom_modules/games').run(message, database, cmd, args, prefix);
     require('./custom_modules/shop_start').run(message, cmd, args, prefix, database);
-    if(cmd == `${prefix}recovery`){
-        main.channels.forEach(let channel => {
-            console.log(channel.name)
-        })
-    }
     if(cmd == `${prefix}run`){
         let devs = await database.channels.find(c => c.name == "devs-02").fetchMessages({limit: 10});
         if(devs.size > 1) return console.log("Канал содержит больше одного сообщения.");
