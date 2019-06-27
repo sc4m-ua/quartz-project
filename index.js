@@ -27,7 +27,7 @@ logger.on('ready', () => {
 });
 
 client.on('message', async message => {
-    if(message.guild.id != main.id && message.guild.id != database.id) return;
+    //if(message.guild.id != main.id && message.guild.id != database.id) return;
     if(message.author.bot) return;
     let messageArray = message.content.split(" ");
     let cmd = messageArray[0];
