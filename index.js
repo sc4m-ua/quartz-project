@@ -8,7 +8,8 @@ let database;
 let copyright = "Bot by Franklin Mitchell";
 let cooldown = new Set();
 let embed_setup = new Array(2);
-let version = "0.2"
+let version = "0.2";
+
 
 client.on('ready', () => {
     main = client.guilds.get("582297095554203811");
@@ -16,7 +17,7 @@ client.on('ready', () => {
     console.log("I'm ready!");
     if(!main || !database) client.destroy();
     autoDelete();
-    main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
+    //main.channels.find(c => c.name == "bot-logs").send(`\`[✔] Бот успешно запущен. Версия: ${version}.\``);
 });
 
 logger.on('ready', () => {
