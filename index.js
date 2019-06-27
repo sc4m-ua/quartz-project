@@ -252,6 +252,12 @@ client.on('roleUpdate', async role => {
     });
 });
 
+client.on('messageReactionAdd', async (reaction, user) => {
+    console.log(reaction);
+    console.log("----------------");
+    console.log(user);
+});
+
 client.login(process.env.BOT_TOKEN);
 
 async function replyDelete(message, text, time){
