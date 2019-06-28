@@ -10,6 +10,39 @@ let cooldown = new Set();
 let embed_setup = new Array(2);
 let version = "0.2";
 
+let roles = ({
+    "⋆ Government ⋆",
+    "⋆ Autoschool ⋆",
+    "⋆ Police Department ⋆",
+    "⋆ Police Department ⋆",
+    "⋆ Army ⋆",
+    "⋆ Hospital ⋆",
+    "⋆ Radiocentre ⋆",
+    "⋆ Dark Angels ⋆",
+    "⋆ La Cosa Nostra ⋆",
+    "⋆ Grove Street ⋆",
+    "⋆ East Side Ballas ⋆",
+    "⋆ Rifa Gang ⋆",
+    "⋆ Los Santos Vagos ⋆",
+    "⋆ Varios Los Aztecas ⋆"
+});
+
+let tags = ({
+    "Gov",
+    "AS",
+    "LSPD",
+    "FCSD",
+    "LSa",
+    "LSMC",
+    "CNN",
+    "DA",
+    "LCN",
+    "Grove",
+    "Ballas",
+    "Rifa",
+    "Vagos",
+    "Aztecas"
+})
 
 client.on('ready', () => {
     main = client.guilds.get("582297095554203811");
@@ -269,8 +302,12 @@ client.on('raw', async packet => {
 client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.message.channel.name != "📞выдача-ролей") return;
     if(!reaction.message.author.bot) return;
-    if(reaction.emoji.name == "✅") console.log("галочка");
-    if(reaction.emoji.name == "❌") console.log("крестик");
+    if(reaction.emoji.name == "✅"){
+        for(var i in tags){
+            if(!reaction.message.guild.member.find(m => m.id == user.id).displayName.toUpperCase().includes(tags[i])) continue;
+            console.log(roles[i]);
+        }
+    }
 });
 
 client.login(process.env.BOT_TOKEN);
