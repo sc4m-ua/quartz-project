@@ -10,7 +10,7 @@ let cooldown = new Set();
 let embed_setup = new Array(2);
 let version = "0.2";
 
-let roles = ({
+let roles = [
     "⋆ Government ⋆",
     "⋆ Autoschool ⋆",
     "⋆ Police Department ⋆",
@@ -25,9 +25,9 @@ let roles = ({
     "⋆ Rifa Gang ⋆",
     "⋆ Los Santos Vagos ⋆",
     "⋆ Varios Los Aztecas ⋆"
-});
+];
 
-let tags = ({
+let tags = [
     "Gov",
     "AS",
     "LSPD",
@@ -42,7 +42,7 @@ let tags = ({
     "Rifa",
     "Vagos",
     "Aztecas"
-})
+];
 
 client.on('ready', () => {
     main = client.guilds.get("582297095554203811");
