@@ -304,7 +304,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(!reaction.message.author.bot) return;
     if(reaction.emoji.name == "✅"){
         for(var i in tags){
-            if(!reaction.message.guild.member.find(m => m.id == user.id).displayName.toUpperCase().includes(tags[i])) continue;
+            if(!reaction.message.guild.members.find(m => m.id == user.id).displayName.toUpperCase().includes(tags[i])) continue;
             console.log(roles[i]);
         }
     }
