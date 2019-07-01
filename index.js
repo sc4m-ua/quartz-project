@@ -15,9 +15,9 @@ let roles = [
     "⋆ Autoschool ⋆",
     "⋆ Police Department ⋆",
     "⋆ Police Department ⋆",
-    "⋆ Army ⋆",
-    "⋆ Hospital ⋆",
-    "⋆ Radiocentre ⋆",
+    "⋆ Ministry of Defense ⋆",
+    "⋆ Ministry of Health ⋆",
+    "⋆ Cable News Network ⋆",
     "⋆ Dark Angels ⋆",
     "⋆ La Cosa Nostra ⋆",
     "⋆ Grove Street ⋆",
@@ -28,20 +28,20 @@ let roles = [
 ];
 
 let tags = [
-    "Gov",
+    "GOV",
     "AS",
     "LSPD",
     "FCSD",
-    "LSa",
+    "LSA",
     "LSMC",
     "CNN",
     "DA",
     "LCN",
-    "Grove",
-    "Ballas",
-    "Rifa",
-    "Vagos",
-    "Aztecas"
+    "GROVE",
+    "BALLAS",
+    "RIFA",
+    "VAGOS",
+    "AZTECAS"
 ];
 
 client.on('ready', () => {
