@@ -11,7 +11,7 @@ let mysql_con = mysql.createConnection({
 });
 mysql_con.connect(function(err){
     if (err){
-        return console.log('[MYSQL] Ошибка подключения к базе MySQL');
+        return console.log(err);
     }
     console.log('[MYSQL] Вы успешно подключились к базе данных.')
 });
