@@ -3,7 +3,7 @@ const client = new Discord.Client();
 const logger = new Discord.Client();
 let config = require('./config.json');
 let mysql = require('mysql');
-let myqsl_con = mysql.createConnection({
+let mysql_con = mysql.createConnection({
   host: process.env.MYSQL_HOST,
   user: process.env.MYSQL_USER,
   password: process.env.MYSQL_PASS,
