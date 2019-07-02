@@ -2,6 +2,20 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const logger = new Discord.Client();
 let config = require('./config.json');
+let mysql = require('mysql');
+let myqsl_con = mysql.createConnection({
+  host: process.env.MYSQL_HOST,
+  user: process.env.MYSQL_USER,
+  password: process.env.MYSQL_PASS,
+  database: process.env.MYSQL_DB
+});
+mysql_con.connect(function(err){
+    if (err){
+        return console.log('[MYSQL] Ошибка подключения к базе MySQL');
+    }
+    console.log('[MYSQL] Вы успешно подключились к базе данных.')
+});
+
 let prefix = config.prefix;
 let main;
 let database;
@@ -303,10 +317,14 @@ client.on('messageReactionAdd', async (reaction, user) => {
     if(reaction.message.channel.name != "📞выдача-ролей") return;
     if(!reaction.message.author.bot) return;
     if(reaction.emoji.name == "✅"){
+        let role = "";
         for(var i in tags){
             if(!reaction.message.guild.members.find(m => m.id == user.id).displayName.toUpperCase().includes(tags[i])) continue;
-            console.log(roles[i]);
+            role = roles[i];
+            break;
         }
+        if(!role) return;
+        
     }
 });
 
