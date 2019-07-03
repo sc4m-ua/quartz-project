@@ -59,7 +59,7 @@ let tags = [
 ];
 
 client.on('ready', () => {
-    main = client.guilds.get("582297095554203811");
+    main = client.guilds.get("593508802205319189");
     database = client.guilds.get("581847932177743873");
     console.log("I'm ready!");
     if(!main || !database) client.destroy();
