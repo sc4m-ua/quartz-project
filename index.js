@@ -269,9 +269,9 @@ client.on('roleDelete', async role => {
         if(!member) return;
         if(member.hasPermission("ADMINISTRATOR")) return;
         member.setRoles([]);
-        let mod_chat = await role.guild.channels.find(c => c.name == "moderators-chat");
+        let mod_chat = await role.guild.channels.find(c => c.name == "bot-logs");
         if(!mod_chat) return;
-        mod_chat.send(`\`[WARNING] \`<@${member.id}>\` был снят системой анти-слива. Причина: удаление роли "${role.name}".\``);
+        mod_chat.send(`\`${message.guild.defaultRole}[WARNING] \`<@${member.id}>\` был снят системой анти-слива. Причина: удаление роли "${role.name}".\``);
     });
 });
 
